@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎟️ Voucher App
 
-## Getting Started
+A web application for managing vouchers, registration, and user authentication.  
+Built with **Next.js**, **React Hook Form**, and **Tailwind CSS**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📌 Features
+- **User Registration & Login** — secure signup with password confirmation
+- **Voucher Management** — create, view, and manage vouchers
+- **Responsive Design** — works on mobile, tablet, and desktop
+- **Form Validation** — powered by React Hook Form
+- **API Integration** — connects to backend API for data persistence
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** Next.js, React, Tailwind CSS
+- **Form Handling:** React Hook Form
+- **API Calls:** Fetch API
+- **State Management:** Local state / React Hook Form
+- **Notifications:** Sonner
+- **Component Library:** Flowbite React
+
+---
+
+## 📂 Project Structure
+```
+/src/app           → Next.js app routes
+/src/features      → Feature modules (auth, dashboard, static pages)
+/src/services      → API functions (e.g., registerUser, loginUser)
+/src/styles        → Global styles (Tailwind + custom CSS)
+/public            → Static assets (images, icons)
+/.ENV              → Environment variables
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ⚙️ Installation & Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/your-username/voucher-app.git
+cd voucher-app
+```
 
-## Learn More
+### 2️⃣ Install Dependencies
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3️⃣ Environment Variables
+Create a `.env.local` file in the root and add:
+```env
+NEXT_PUBLIC_API_URL=your api
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4️⃣ Run the App
+```bash
+npm run dev
+```
+Your app will be available at **http://localhost:3000**.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔗 API Endpoints
+The app uses a backend API (update `NEXT_PUBLIC_API_URL` as needed):
+- `POST /register` — Register a new user
+- `POST /login` — Login user
+- `GET /vouchers` — Get all vouchers
+- `POST /vouchers` — Create a voucher
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧪 Example Registration Request
+```js
+await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    name: "John Doe",
+    email: "john@example.com",
+    password: "secret123",
+    password_confirmation: "secret123"
+  })
+});
+```
+
+---
+
+## 📸 Screenshots
+_Add screenshots of your app UI here._
+
+---
+
+## 📜 License
+This project is licensed under the MIT License — feel free to use and modify it.
+
+---
+
+## 🤝 Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+
+---
+
+**Author:** Solomon Tuangpu 
+**GitHub:** [solomontuangpu](https://github.com/solomontuangpu)
