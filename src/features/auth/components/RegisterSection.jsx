@@ -3,8 +3,10 @@
 
 import { registerUser } from "@/services/auth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+
 
 const RegisterSection = () => {
 
@@ -13,11 +15,10 @@ const RegisterSection = () => {
   } } = useForm();
   const password = watch("password");
 
-  const onSubmit = async ({name, email, password, password_confirmation}) => {
-    
-   // console.log({name, email, password, password_confirmation});
-    
+  const router = useRouter();
 
+  const onSubmit = async ({name, email, password, password_confirmation}) => {
+  
       try {
         const res = await registerUser({
           name,
@@ -32,7 +33,9 @@ const RegisterSection = () => {
         if(!res.ok){
           throw new Error(json.message || "Registration failed!");
         }
+
         toast.success("Successfully registered");
+        router.push("/login")
       } catch (error) {
         console.log(error.message);
         toast.error(error.message)
@@ -40,8 +43,8 @@ const RegisterSection = () => {
   }
 
   return (
-    <section className='bg-gray-50 dark:bg-gray-900'>
-      <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
+    <section className='bg-gray-50 dark:bg-gray-900 min-h-screen'>
+      <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0'>
         <Link
           href='/'
           className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white'

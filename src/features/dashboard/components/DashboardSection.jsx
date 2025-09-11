@@ -1,10 +1,10 @@
-import LogoutButton from "./LogoutButton";
+import DashboardHeader from "./DashboardHeader";
 
 const DashboardSection = () => {
   return (
-    <div className="mt-20">
-      <LogoutButton />
-    </div>
+    <>
+      <DashboardHeader />
+    </>
   );
 };
 
