@@ -1,6 +1,8 @@
+import ProductCreateForm from "./ProductCreateForm";
+
 const InventoryCreateSection = () => {
   return (
-    <div></div>
+    <ProductCreateForm />
   );
 };
 

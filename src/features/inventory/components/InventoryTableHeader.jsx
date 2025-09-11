@@ -1,4 +1,5 @@
 import { ChevronDown, FilterIcon, PlusIcon, SearchIcon } from "lucide-react";
+import Link from "next/link";
 
 const InventoryTableHeader = () => {
   return (
@@ -23,13 +24,13 @@ const InventoryTableHeader = () => {
         </form>
       </div>
       <div className="flex w-full flex-shrink-0 flex-col items-stretch justify-end space-y-2 md:w-auto md:flex-row md:items-center md:space-y-0 md:space-x-3">
-        <button
-          type="button"
+        <Link
+         href={"inventory/create"}
           className="bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-white focus:ring-4 focus:outline-none"
         >
           <PlusIcon size={20} className="mr-2" />
           Add product
-        </button>
+        </Link>
 
         <button
           id="filterDropdownButton"

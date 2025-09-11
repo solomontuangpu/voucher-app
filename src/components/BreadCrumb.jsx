@@ -2,7 +2,6 @@ import { ChevronRight, Home } from "lucide-react";
 import Link from "next/link";
 
 const BreadCrumb = ({ currentPage, links = [] }) => {
-  console.log(links)
   return (
     <nav className="flex px-4 py-3 shadow-sm" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
