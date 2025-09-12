@@ -20,3 +20,12 @@ export const storeProduct = (payloads) => {
     body: JSON.stringify(payloads),
   });
 };
+
+export const deleteProduct = (id) => {
+  return fetch(`${productApiUrl}/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${useAccountStore.getState().token}`,
+    },
+  });
+}
