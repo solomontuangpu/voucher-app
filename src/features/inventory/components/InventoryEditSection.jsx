@@ -1,6 +1,11 @@
+"use client";
+import { useParams, useRouter } from "next/navigation";
+import ProductEditForm from "./ProductEditForm";
+
 const InventoryEditSection = () => {
+
   return (
-    <div>Edit</div>
+    <ProductEditForm />
   );
 };
 

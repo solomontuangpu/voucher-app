@@ -28,14 +28,20 @@ const InventoryTableRow = (product) => {
         {product.product_name}
       </th>
       <td className="px-4 py-3">{product.price}</td>
-      <td className="flex gap-2 items-center px-4 py-3">
+      <td className="flex items-center gap-2 px-4 py-3">
         <Link href={""} className="cursor-pointer active:scale-90">
           <ViewIcon />
         </Link>
-        <Link href={""} className="cursor-pointer active:scale-90">
+        <Link
+          href={`/dashboard/inventory/${product.id}/edit`}
+          className="cursor-pointer active:scale-90"
+        >
           <PenSquareIcon />
         </Link>
-        <button onClick={handleDelete} className="cursor-pointer active:scale-90">
+        <button
+          onClick={handleDelete}
+          className="cursor-pointer active:scale-90"
+        >
           <Trash2Icon />
         </button>
       </td>

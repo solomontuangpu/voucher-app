@@ -21,6 +21,17 @@ export const storeProduct = (payloads) => {
   });
 };
 
+export const updateProduct = (payloads, id) => {
+  return fetch(`${productApiUrl}/${id}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${useAccountStore.getState().token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payloads),
+  });
+};
+
 export const deleteProduct = (id) => {
   return fetch(`${productApiUrl}/${id}`, {
     method: "DELETE",
