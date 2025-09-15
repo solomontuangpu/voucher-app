@@ -7,12 +7,12 @@ import {
 import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 
 const ProductEditForm = () => {
   const { id } = useParams();
   const router = useRouter();
-  const { data, isLoading, error } = useSWR(
+  const { data, isLoading, isValidating } = useSWR(
     `${productApiUrl}/${id}`,
     productFetcher,
   );
@@ -25,10 +25,12 @@ const ProductEditForm = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading || isValidating || !data) return <p>Loading...</p>;
 
   const onSubmit = async (payloads) => {
     try {
+     
+
       const res = await updateProduct(payloads, id);
       const json = await res.json();
 
@@ -38,6 +40,10 @@ const ProductEditForm = () => {
         });
         return;
       }
+
+      await mutate(`${productApiUrl}/${id}`);
+     
+
       reset();
       toast.success("Product updated successfully");
       router.push("/dashboard/inventory");
