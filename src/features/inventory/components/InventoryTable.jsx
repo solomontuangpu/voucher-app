@@ -6,10 +6,10 @@ import InventoryTableHeader from "./InventoryTableHeader";
 import EmptyData from "./EmptyData";
 import ListSkeletonLoader from "./ListSkeletonLoader";
 
-const InventoryTable = ({ products, isLoading }) => {
+const InventoryTable = ({ products, isLoading, setFetchUrl }) => {
   return (
     <div className="relative overflow-hidden bg-white shadow-md sm:rounded-lg dark:bg-gray-800">
-      <InventoryTableMenu />
+      <InventoryTableMenu setFetchUrl={setFetchUrl} />
       <div className="overflow-x-auto">
         <table className=" table-fixed w-full text-left text-sm text-gray-500 dark:text-gray-400">
           <InventoryTableHeader />

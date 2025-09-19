@@ -1,7 +1,16 @@
+import { productApiUrl } from "@/services/product";
+import { debounce } from "lodash";
 import { ChevronDown, FilterIcon, PlusIcon, SearchIcon } from "lucide-react";
 import Link from "next/link";
 
-const InventoryTableMenu = () => {
+const InventoryTableMenu = ({setFetchUrl}) => {
+
+const handleSearch =debounce((e) => {
+  const q = e.target.value;
+  setFetchUrl(`${productApiUrl}?q=${q}`);
+},500)
+
+
   return (
     <div className="flex flex-col items-center justify-between space-y-3 p-4 md:flex-row md:space-y-0 md:space-x-4">
       <div className="w-full md:w-1/2">
@@ -14,6 +23,7 @@ const InventoryTableMenu = () => {
               <SearchIcon size={20} className="text-gray-500" />
             </div>
             <input
+              onChange={handleSearch}
               type="text"
               id="simple-search"
               className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
