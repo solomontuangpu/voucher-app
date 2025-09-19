@@ -3,7 +3,7 @@ const ListSkeletonLoader = () => {
     <>
       <tr className="animate-pulse border-b dark:border-gray-700">
         <td className="px-4 py-3">
-          <div className="h-4 w-12 rounded bg-gray-300 dark:bg-gray-600"></div>
+          <div className="h-4 w-5 rounded bg-gray-300 dark:bg-gray-600"></div>
         </td>
         <th
           scope="row"

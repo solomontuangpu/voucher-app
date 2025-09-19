@@ -11,7 +11,7 @@ const InventoryTable = ({ products, isLoading }) => {
     <div className="relative overflow-hidden bg-white shadow-md sm:rounded-lg dark:bg-gray-800">
       <InventoryTableMenu />
       <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+        <table className=" table-fixed w-full text-left text-sm text-gray-500 dark:text-gray-400">
           <InventoryTableHeader />
 
           <tbody>
