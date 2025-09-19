@@ -1,40 +1,34 @@
-"use client";``
+"use client";
 
 import InventoryTableRow from "./InventoryTableRow";
+import InventoryTableMenu from "./InventoryTableMenu";
 import InventoryTableHeader from "./InventoryTableHeader";
-import InventoryTableFooter from "./InventoryTablePagination";
+import EmptyData from "./EmptyData";
+import ListSkeletonLoader from "./ListSkeletonLoader";
 
-const InventoryTable = ({products}) => {
-
+const InventoryTable = ({ products, isLoading }) => {
   return (
     <div className="relative overflow-hidden bg-white shadow-md sm:rounded-lg dark:bg-gray-800">
-      <InventoryTableHeader />
+      <InventoryTableMenu />
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-          <thead className="bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-4 py-3">
-                Product name
-              </th>
+          <InventoryTableHeader />
 
-              <th scope="col" className="px-4 py-3">
-                Price
-              </th>
-              <th scope="col" className="px-4 py-3">
-                Action
-              </th>
-            </tr>
-          </thead>
           <tbody>
-            {
+            {isLoading ? (
+              Array.from({ length: 5 }).map((_, i) => (
+                <ListSkeletonLoader key={i} />
+              ))
+            ) : !products?.length ? (
+              <EmptyData />
+            ) : (
               products?.map((product) => (
                 <InventoryTableRow key={product.id} {...product} />
               ))
-            }
+            )}
           </tbody>
         </table>
       </div>
-      <InventoryTableFooter />
     </div>
   );
 };

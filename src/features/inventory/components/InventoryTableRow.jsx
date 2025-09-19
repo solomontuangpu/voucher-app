@@ -21,6 +21,7 @@ const InventoryTableRow = (product) => {
 
   return (
     <tr className="border-b dark:border-gray-700">
+      <td className="px-4 py-3">{product.id}</td>
       <th
         scope="row"
         className="px-4 py-3 font-medium whitespace-nowrap text-gray-900 dark:text-white"
@@ -29,7 +30,11 @@ const InventoryTableRow = (product) => {
       </th>
       <td className="px-4 py-3">{product.price}</td>
       <td className="flex items-center gap-2 px-4 py-3">
-        <Link href={""} className="cursor-pointer active:scale-90">
+        <Link
+          href={""}
+          className="cursor-pointer active:scale-90"
+          disabled={true}
+        >
           <ViewIcon />
         </Link>
         <Link

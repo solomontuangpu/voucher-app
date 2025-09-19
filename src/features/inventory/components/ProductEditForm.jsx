@@ -100,7 +100,7 @@ const ProductEditForm = () => {
               </label>
               <input
                 type="number"
-                step="0.01"
+                step="1"
                 id="price"
                 placeholder="Enter product price"
                 defaultValue={data.data.price}
