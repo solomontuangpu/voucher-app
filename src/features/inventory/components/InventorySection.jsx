@@ -9,12 +9,12 @@ import { useSearchParams } from "next/navigation";
 const InventorySection = () => {
   const searchParams = useSearchParams();
   const [fetchUrl, setFetchUrl] = useState(productApiUrl);
-
+  
   const { data, isLoading, error } = useSWR(fetchUrl, productFetcher);
 
   useEffect(()=> {
-    if(searchParams.get("q")){
-      setFetchUrl(`${productApiUrl}?q=${searchParams.get("q")}`); 
+    if(searchParams){
+      setFetchUrl(`${productApiUrl}?${searchParams}`); 
     }
   }, []);
 

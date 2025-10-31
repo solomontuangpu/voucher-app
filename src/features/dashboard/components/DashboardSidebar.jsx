@@ -13,7 +13,7 @@ const DashboardSidebar = () => {
   return (
     <aside
       id="default-sidebar"
-      className={`relative top-0 left-0 z-40 h-screen w-72 transform transition-transform duration-300 ${toggle ? "translate-x-0" : "-translate-x-50"} `}
+      className={`relative top-0 left-0 z-40 h-screen w-60 transform transition-transform duration-300 ${toggle ? "translate-x-0" : "-translate-x-40"} `}
       aria-label="Sidenav"
     >
       <div className="h-full overflow-y-auto border-r border-gray-200 bg-white px-3 py-5 dark:border-gray-700 dark:bg-gray-800">
