@@ -6,7 +6,7 @@ const useAccountStore = create(persist((set) => ({
   setToken: (token) => set({ token }),
   logout: () => set({ token: null })
 }), {
-  name: 'account-storage' // name of the item in the storage (must be unique)
+  name: 'account-storage' // name of the item in the storage 
 }));
 
 export default useAccountStore;

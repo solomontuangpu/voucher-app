@@ -22,7 +22,7 @@ const LoginSection = () => {
     try {
       const res = await loginUser({ email, password });
       const json = await res.json();
-      console.log(json.token);
+    
       if (!res.ok) {
         setError("root", { type: "manual", message: "Invalid Credentials!" });
         return;

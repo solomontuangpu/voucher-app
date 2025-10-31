@@ -1,10 +1,21 @@
+import { productApiUrl } from "@/services/product";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+
 
 const InventoryTablePagination = ({ data, setFetchUrl }) => {
+
+  const router = useRouter();
   
   const handleClick = (to) => {
+   
     if (!`${data?.links[to]}`) return;
-    setFetchUrl(`${data?.links[to]}`);
+
+
+    const url = data?.links[to];
+    const queryString = new URL(url).search;
+    router.push(queryString);
+    setFetchUrl(`${productApiUrl}${queryString}`);
   }
 
   return (
