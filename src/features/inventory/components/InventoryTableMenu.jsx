@@ -1,38 +1,11 @@
-import { productApiUrl } from "@/services/product";
-import { debounce } from "lodash";
 import { ChevronDown, FilterIcon, PlusIcon, SearchIcon, X } from "lucide-react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef } from "react";
+import useProducts from "../hooks/useProducts";
 
 
-const InventoryTableMenu = ({setFetchUrl}) => {
+const InventoryTableMenu = () => {
 
-const searchParams = useSearchParams();
-const router = useRouter();
-const searchRef = useRef();
-
-useEffect(()=> {
-  if(searchParams.get("q")){
-    searchRef.current.value = searchParams.get("q");
-  }
-}, [])
-
-const handleSearch =debounce((e) => {
-  const q = e.target.value;
-  const params = new URLSearchParams(searchParams.toString());
-  params.set("q", q);
-  router.push(`?${params}`)
-  setFetchUrl(`${productApiUrl}?${params}`);
-},500)
-
-const handleClearSearch = () => {
-  searchRef.current.value = "";
-  const params = new URLSearchParams(searchParams.toString());
-  params.delete("q");
-  router.push(`?${params}`);
-  setFetchUrl(`${productApiUrl}?${params}`);
-}
+const {searchRef, searchParams, handleSearch, handleClearSearch} = useProducts();
   return (
     <div className="flex flex-col items-center justify-between space-y-3 p-4 md:flex-row md:space-y-0 md:space-x-4">
       <div className="w-full md:w-1/2">

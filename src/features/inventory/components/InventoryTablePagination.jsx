@@ -1,20 +1,8 @@
-import { productApiUrl } from "@/services/product";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRouter } from "next/navigation";
+import useProducts from "../hooks/useProducts";
 
-const InventoryTablePagination = ({ data, setFetchUrl }) => {
-  
-  const router = useRouter();
-
-  const handleClick = (to) => {
-    if (!`${data?.links[to]}`) return;
-
-    const url = data?.links[to];
-    const queryString = new URL(url).search;
-    router.push(queryString);
-    setFetchUrl(`${productApiUrl}${queryString}`);
-  };
-
+const InventoryTablePagination = () => {
+  const { data, handleClick } = useProducts();
   return (
     <nav
       className="flex flex-col items-start justify-between space-y-3 p-4 md:flex-row md:items-center md:space-y-0"

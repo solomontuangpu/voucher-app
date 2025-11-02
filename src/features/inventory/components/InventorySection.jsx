@@ -1,22 +1,11 @@
 "use client";
-import useSWR from "swr";
 import InventoryTable from "./InventoryTable";
-import { productApiUrl, productFetcher } from "@/services/product";
 import InventoryTablePagination from "./InventoryTablePagination";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import useProducts from "../hooks/useProducts";
 
 const InventorySection = () => {
-  const searchParams = useSearchParams();
-  const [fetchUrl, setFetchUrl] = useState(productApiUrl);
-  
-  const { data, isLoading, error } = useSWR(fetchUrl, productFetcher);
 
-  useEffect(()=> {
-    if(searchParams){
-      setFetchUrl(`${productApiUrl}?${searchParams}`); 
-    }
-  }, []);
+  const { data, error, isLoading, setFetchUrl } = useProducts();
 
 
   if(error){
