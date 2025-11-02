@@ -1,8 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import useProducts from "../hooks/useProducts";
 
-const InventoryTablePagination = () => {
-  const { data, handleClick } = useProducts();
+
+const InventoryTablePagination = ({ data, handleClick} ) => {
   return (
     <nav
       className="flex flex-col items-start justify-between space-y-3 p-4 md:flex-row md:items-center md:space-y-0"

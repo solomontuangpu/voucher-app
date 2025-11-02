@@ -1,11 +1,12 @@
 import { ChevronDown, FilterIcon, PlusIcon, SearchIcon, X } from "lucide-react";
 import Link from "next/link";
-import useProducts from "../hooks/useProducts";
 
-
-const InventoryTableMenu = () => {
-
-const {searchRef, searchParams, handleSearch, handleClearSearch} = useProducts();
+const InventoryTableMenu = ({
+  searchRef,
+  searchParams,
+  handleSearch,
+  handleClearSearch,
+}) => {
   return (
     <div className="flex flex-col items-center justify-between space-y-3 p-4 md:flex-row md:space-y-0 md:space-x-4">
       <div className="w-full md:w-1/2">
@@ -22,7 +23,7 @@ const {searchRef, searchParams, handleSearch, handleClearSearch} = useProducts()
                 <X
                   onClick={handleClearSearch}
                   size={20}
-                  className="cursor-pointer text-gray-500 active:scale-120 duration-75"
+                  className="cursor-pointer text-gray-500 duration-75 active:scale-120"
                 />
               </div>
             )}
