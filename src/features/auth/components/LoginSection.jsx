@@ -1,44 +1,15 @@
 "use client";
 
-import { loginUser } from "@/services/auth";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import useAccountStore from "@/stores/useAccountStore";
-import { useRouter } from "next/navigation";
+import useLogin from "../hooks/useLogin";
 
 const LoginSection = () => {
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors, isSubmitting },
-  } = useForm();
-
-  const { setToken } = useAccountStore();
-  const router = useRouter();
-
-  const onSubmit = async ({ email, password }) => {
-    try {
-      const res = await loginUser({ email, password });
-      const json = await res.json();
-    
-      if (!res.ok) {
-        setError("root", { type: "manual", message: "Invalid Credentials!" });
-        return;
-      }
-      setToken(json.token);
-      router.push("/dashboard");
-      toast.success("Login Successfully");
-    } catch (error) {
-      toast.error(error.message || "Unexpected Error!");
-      console.log(error);
-    }
-  };
+  const { errors, register, isSubmitting, handleSubmit, onLoginSubmit } =
+    useLogin();
 
   return (
     <section className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 h-screen lg:py-0">
+      <div className="mx-auto flex h-screen flex-col items-center justify-center px-6 py-8 lg:py-0">
         <Link
           href="/"
           className="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white"
@@ -63,7 +34,7 @@ const LoginSection = () => {
             )}
 
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit(onLoginSubmit)}
               className="space-y-4 md:space-y-6"
             >
               <div>
