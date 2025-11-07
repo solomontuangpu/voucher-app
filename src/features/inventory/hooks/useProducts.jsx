@@ -39,6 +39,7 @@ const useProducts = () => {
 
     if (value) {
       params.set(key, value);
+      params.set("page", "1");
     } else {
       params.delete(key);
     }
